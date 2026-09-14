@@ -376,52 +376,6 @@ function isMobile() {
     return /Android|iPhone/i.test(navigator.userAgent);
     // return navigator.maxTouchPoints > 0;
 }
-// function changeDirection() {
-//     if (touchendx < touchstartx && touchstartx-touchendx < touchmiddlex) {
-//         projects[0].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projects[1].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projects[2].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projBalls[0].className = '';
-//         projBalls[1].className = 'active';
-//         projBalls[2].className = '';
-//         console.log("touchendx:", touchendx, "touchstartx:", touchstartx, "touchstartx-touchendx", touchstartx-touchendx);
-        
-        
-//     } if (touchendx < touchstartx && touchstartx-touchendx > touchmiddlex) {
-//         projects[0].style.cssText = "transform: translateX(-180%) scale(0.8);";
-//         projects[1].style.cssText = "transform: translateX(-180%) scale(0.8);";
-//         projects[2].style.cssText = "transform: translateX(-180%) scale(0.8);";
-//         projBalls[2].className = 'active';
-//         projBalls[1].className = '';
-//         projBalls[0].className = '';
-//         console.log("touchendx:", touchendx, "touchstartx:", touchstartx, "touchstartx-touchendx", touchstartx-touchendx);
-        
-//     }
-//     if (touchendx > touchstartx && touchstartx-touchendx < touchmiddlex) {
-//         projects[0].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projects[1].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projects[2].style.cssText = "transform: translateX(-90%) scale(0.8);";
-//         projBalls[0].className = '';
-//         projBalls[1].className = 'active';
-//         projBalls[2].className = '';
-//         console.log("touchendx:", touchendx, "touchstartx:", touchstartx, "touchstartx-touchendx", touchstartx-touchendx);
-        
-//     }
-//     if (touchendx > touchstartx && touchstartx-touchendx > touchmiddlex) {
-//         projects[0].style.cssText = "transform: translateX(0%) scale(0.8);";
-//         projects[1].style.cssText = "transform: translateX(0%) scale(0.8);";
-//         projects[2].style.cssText = "transform: translateX(0%) scale(0.8);";
-//         projBalls[1].className = '';
-//         projBalls[0].className = 'active';
-//         projBalls[2].className = '';
-//         console.log("touchendx:", touchendx, "touchstartx:", touchstartx, "touchstartx-touchendx", touchstartx-touchendx);
-        
-//     }
-// }
-
-// Swipe support
-// Swipe support
-
 
 function changeDirection() {
     const delta = touchstartx - touchendx;
@@ -448,16 +402,17 @@ function changeDirection() {
 }
 
 function goToSlide(index) {
-    const offsets = ['0%', '-90%', '-180%'];
-    const translateX = offsets[index];
+    console.log(index)
+    // const offsets = ['0%', '-90%', '-180%'];
+    // const translateX = offsets[index];
 
-    projects.forEach(p => {
-        p.style.cssText = `transform: translateX(${translateX}) scale(0.8); transition: transform 0.3s ease;`;
-    });
+    // projects.forEach(p => {
+    //     p.style.cssText = `transform: translateX(${translateX}) scale(0.8); transition: transform 0.3s ease;`;
+    // });
 
-    projBalls.forEach((ball, i) => {
-        ball.className = i === index ? 'active' : '';
-    });
+    // projBalls.forEach((ball, i) => {
+    //     ball.className = i === index ? 'active' : '';
+    // });
 }
 
 function ballClick() {
@@ -514,28 +469,44 @@ function change(id) {
             img.classList.remove('active');
             if (img.getAttribute('id') == `${id}`) {
                 img.classList.add('active');
+                img.parentNode.children[7]
                 
                 if (id == 'lumen') {
-                    img.parentNode.children[5].classList.remove('active');
                     img.parentNode.children[1].classList.add('active');
                     img.parentNode.children[3].classList.remove('active');
+                    img.parentNode.children[5].classList.remove('active');
+                    img.parentNode.children[7].classList.remove('active');
                     document.querySelector('#firstcard').classList.add('middle')
                     document.querySelector('#secondcard').classList.remove('middle')
                     document.querySelector('#thirdcard').classList.remove('middle')
-                } else if (id == 'alberto') {
+                    document.querySelector('#fourthcard').classList.remove('middle')
+                } else if (id == 'weather') {
                     img.parentNode.children[1].classList.remove('active');
                     img.parentNode.children[3].classList.add('active');
                     img.parentNode.children[5].classList.remove('active');
+                    img.parentNode.children[7].classList.remove('active');
                     document.querySelector('#secondcard').classList.add('middle')
                     document.querySelector('#firstcard').classList.remove('middle')
                     document.querySelector('#thirdcard').classList.remove('middle')
+                    document.querySelector('#fourthcard').classList.remove('middle')
+                }  else if (id == 'alberto') {
+                    img.parentNode.children[1].classList.remove('active');
+                    img.parentNode.children[3].classList.remove('active');
+                    img.parentNode.children[5].classList.add('active');
+                    img.parentNode.children[7].classList.remove('active');
+                    document.querySelector('#thirdcard').classList.add('middle')
+                    document.querySelector('#firstcard').classList.remove('middle')
+                    document.querySelector('#secondcard').classList.remove('middle')
+                    document.querySelector('#fourthcard').classList.remove('middle')
                 } else {
                     img.parentNode.children[1].classList.remove('active');
-                    img.parentNode.children[5].classList.add('active');
+                    img.parentNode.children[5].classList.remove('active');
                     img.parentNode.children[3].classList.remove('active');
-                        document.querySelector('#thirdcard').classList.add('middle')
-                        document.querySelector('#secondcard').classList.remove('middle')
-                        document.querySelector('#firstcard').classList.remove('middle')
+                    img.parentNode.children[7].classList.add('active');
+                    document.querySelector('#fourthcard').classList.add('middle')
+                    document.querySelector('#secondcard').classList.remove('middle')
+                    document.querySelector('#firstcard').classList.remove('middle')
+                    document.querySelector('#thirdcard').classList.remove('middle')
                     }
             }
         })
@@ -545,16 +516,16 @@ const photo = [ './src/thrift.png', './src/thrift-two.png', './src/thrift-three.
 let temp = 0;
 const timeinterval_a = setInterval(() => {
     
-    projImg[2].style.transition = 'all ease .3s'; 
-    projImg[2].style.background = ` url(${photo[temp]})`;
-    projImg[2].style.backgroundPosition= 'center';
-    projImg[2].style.backgroundRepeat= 'no-repeat';
-    projImg[2].style.backgroundSize = 'contain';
+    projImg[3].style.transition = 'all ease .3s'; 
+    projImg[3].style.background = ` url(${photo[temp]})`;
+    projImg[3].style.backgroundPosition= 'center';
+    projImg[3].style.backgroundRepeat= 'no-repeat';
+    projImg[3].style.backgroundSize = 'contain';
     if (temp == (photo.length)) {
-        projImg[2].style.background = "url('./src/thrift-five.png')";
-        projImg[2].style.backgroundPosition= 'center';
-        projImg[2].style.backgroundRepeat= 'no-repeat';
-        projImg[2].style.backgroundSize = 'contain';
+        projImg[3].style.background = "url('./src/thrift-five.png')";
+        projImg[3].style.backgroundPosition= 'center';
+        projImg[3].style.backgroundRepeat= 'no-repeat';
+        projImg[3].style.backgroundSize = 'contain';
         temp = 0;
     } else {
         temp++;
@@ -564,16 +535,16 @@ timeinterval_a;
 let forNow = 0;
 const images = [ './src/alberto.png', './src/alberto-two.png', './src/alberto-three.png', './src/alberto-four.png', './src/alberto-five.png'];
 const timeinterval_b = setInterval(() => {
-    projImg[1].style.transition = 'all ease .3s'; 
-    projImg[1].style.background = ` url(${images[forNow]})`;
-    projImg[1].style.backgroundPosition= 'center';
-    projImg[1].style.backgroundRepeat= 'no-repeat';
-    projImg[1].style.backgroundSize = 'contain';
+    projImg[2].style.transition = 'all ease .3s'; 
+    projImg[2].style.background = ` url(${images[forNow]})`;
+    projImg[2].style.backgroundPosition= 'center';
+    projImg[2].style.backgroundRepeat= 'no-repeat';
+    projImg[2].style.backgroundSize = 'contain';
     if (temp == (images.length)) {
-        projImg[1].style.background = "url('./src/alberto-six.png')";
-        projImg[1].style.backgroundPosition= 'center';
-        projImg[1].style.backgroundRepeat= 'no-repeat';
-        projImg[1].style.backgroundSize = 'contain';
+        projImg[2].style.background = "url('./src/alberto-six.png')";
+        projImg[2].style.backgroundPosition= 'center';
+        projImg[2].style.backgroundRepeat= 'no-repeat';
+        projImg[2].style.backgroundSize = 'contain';
         forNow = 0;
     } else {
         forNow++;
@@ -599,3 +570,22 @@ const timeinterval_c = setInterval(() => {
     }
 }, 1000);
 timeinterval_c;
+let thisOnce = 0;
+const gallery = [ './src/tnr_weather_1', './src/tnr_weather_2'];
+const timeinterval_d = setInterval(() => {
+    projImg[1].style.transition = 'all ease .3s'; 
+    projImg[1].style.background = ` url(${gallery[thisOnce]})`;
+    projImg[1].style.backgroundPosition= 'center';
+    projImg[1].style.backgroundRepeat= 'no-repeat';
+    projImg[1].style.backgroundSize = 'contain';
+    if (temp == (pics.length)) {
+        projImg[1].style.background = "url('./src/tnr_weather_1')";
+        projImg[1].style.backgroundPosition= 'center';
+        projImg[1].style.backgroundRepeat= 'no-repeat';
+        projImg[1].style.backgroundSize = 'contain';
+        forNow = 0;
+    } else {
+        forNow++;
+    }
+}, 1000);
+timeinterval_d;

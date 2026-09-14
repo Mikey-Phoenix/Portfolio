@@ -586,9 +586,13 @@ main .bigCont .bigProj #alberto {
 main .bigCont .bigProj #lumen {
     background-image: url('./lumen.png');
 }
+main .bigCont .bigProj #weather {
+    background-image: url('./tnr_weather_1.png');
+}
 main .bigCont .bigProj div:nth-child(2),
 main .bigCont .bigProj div:nth-child(4),
-main .bigCont .bigProj div:nth-child(6) {
+main .bigCont .bigProj div:nth-child(6),
+main .bigCont .bigProj div:nth-child(8) {
     display: none;
 }
 main .bigCont .bigProj div.active {
@@ -632,7 +636,7 @@ main .bigCont .big {
     margin-bottom: 10%;
     position: absolute;
     right: 0%;
-    top: 50%;
+    top: 25%;
 }
 
 main .big .card {
@@ -693,9 +697,12 @@ main .big .card#firstcard .image {
     background-image: url('./lumen.png');
 }
 main .big .card#secondcard .image {
-    background-image: url('./alberto.png');
+    background-image: url('./tnr_weather_1.png');
 }
 main .big .card#thirdcard .image {
+    background-image: url('./alberto.png');
+}
+main .big .card#fourthcard .image {
     background-image: url('./thrift.png');
 }
 main .big .middle .image {
@@ -1058,13 +1065,18 @@ main #contact .container .subContainer #res i {
         top: 0%;
         left: 0%;
         width: 90vw !important;
-        grid-template-columns: auto auto auto;
+        /* display: flex; */
+        /* grid-template-columns: auto; */
+        
         transform: translate(0%);
-        overflow: hidden;
+        /* overflow: scroll; */
+        /* background-color: red; */
     }
     main .big .card {
-        scroll-snap-align: center;
+        /* scroll-snap-align: center; */
         height: 450px;
+        margin-top: -20%;
+        margin-left: -5%;
         width: 100% !important;
         position: relative;
         display: flex;
@@ -1074,7 +1086,7 @@ main #contact .container .subContainer #res i {
         transition: all ease .3s;
     }
     main .big .card .image {
-        width: 80vw !important;
+        /* width: 90vw !important; */
         height: 200px;
         background-image: url('./alberto.png');
         filter: grayscale(0);
