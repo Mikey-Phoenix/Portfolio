@@ -478,19 +478,40 @@ main .tech {
     margin-bottom: 10%;
     padding-top: 5%;
 }
-main .tech div {
-    display: flex;
+main .tech > div {
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
+    /* background-color: rgba(177, 46, 79, 0.4); */
+    background-color: white;
+    box-shadow: .5px .5px 5px rgb(187, 185, 185);
+    border-radius: 5px;
 }
 main .tech div > div {
-    background-color: white;
-    width: fit-content;
+    /* width: fit-content; */
     padding: 10px 20px;
     font-size: 25px;
     border-radius: 5px;
     margin: 5px;
-    box-shadow: .5px .5px 5px rgb(187, 185, 185);
+}
+main .tech div div div.techName {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+main .tech div .progressCont {
+    /* width: 90%; */
+    padding: 0%;
+    /* overflow: hidden; */
+    /* border: 1px solid red; */
+}
+main .tech div .progressBar {
+    --progressShort: 1%;
+    width: var(--progressShort);
+    height: 2px;
+    margin: 0%;
+    background-color: rgba(177, 46, 79, 0.8);
+    transition: all ease 1s;
 }
 
 
@@ -578,16 +599,16 @@ main .bigCont .bigProj .image.active {
     display: block;
 }
 main .bigCont .bigProj #thrift {
-    background-image: url('./thrift.png');
+    background-image: url('./thrift.webp');
 }
 main .bigCont .bigProj #alberto {
-    background-image: url('./alberto.png');
+    background-image: url('./alberto.webp');
 }
 main .bigCont .bigProj #lumen {
-    background-image: url('./lumen.png');
+    background-image: url('./lumen.webp');
 }
 main .bigCont .bigProj #weather {
-    background-image: url('./tnr_weather_1.png');
+    background-image: url('./tnr_weather_1.webp');
 }
 main .bigCont .bigProj div:nth-child(2),
 main .bigCont .bigProj div:nth-child(4),
@@ -669,7 +690,7 @@ main .big.show {
 }
 main .big .card.show:nth-child(2){
     transition-delay: 400ms;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 main .big .card:nth-child(3){
     transition-delay: 200ms;
@@ -693,17 +714,20 @@ main .big .card .image {
     filter: grayscale(100%);
     transition: inherit;
 }
+/* main .big .card#secondcard {
+    transform: scale(0.8)
+} */
 main .big .card#firstcard .image {
-    background-image: url('./lumen.png');
+    background-image: url('./lumen.webp');
 }
 main .big .card#secondcard .image {
-    background-image: url('./tnr_weather_1.png');
+    background-image: url('./tnr_weather_1.webp');
 }
 main .big .card#thirdcard .image {
-    background-image: url('./alberto.png');
+    background-image: url('./alberto.webp');
 }
 main .big .card#fourthcard .image {
-    background-image: url('./thrift.png');
+    background-image: url('./thrift.webp');
 }
 main .big .middle .image {
     filter: grayscale(0%);
@@ -1023,11 +1047,14 @@ main #contact .container .subContainer #res i {
 
     /** TECHNOLOGY **/
     main .tech {
-        margin: 0%;
-        width: 100%;
+        margin: auto;
+        width: 95%;
     }
     main .tech div div {
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+    main .tech div div  {
+        padding: 5px
     }
 
 
@@ -1084,11 +1111,22 @@ main #contact .container .subContainer #res i {
         justify-content: space-between;
         align-items: center;
         transition: all ease .3s;
+        /* transform: translateY(-100%) */
+        opacity: 0;
+    }
+    main .big .card#secondcard {
+        transform: scale(0.8)
+    }
+    main .big .card:hover {
+        width: 100% !important;
+    }
+    main .bigCont .big .show {
+        opacity: 1;
     }
     main .big .card .image {
         /* width: 90vw !important; */
         height: 200px;
-        background-image: url('./alberto.png');
+        background-image: url('./alberto.webp');
         filter: grayscale(0);
     }
     main .big .card div {

@@ -57,14 +57,22 @@ const projects = Array.from(document.querySelectorAll("main #projects .bigCont .
 
 const hiddenElementsEdu = document.querySelectorAll('main div.edu .eduContainer .hidden');
 const hiddenElementsProj = document.querySelectorAll('main .big.hidden');
+const displayHiddenElementsProj = document.querySelectorAll('main .bigCont .big .card');
 const hiddenElementsBigProj = document.querySelectorAll('main .bigCont .bigProj');
 const hiddenElementsAchieve = document.querySelectorAll('main .white .textHidden');
 const hiddenElementsHead = document.querySelectorAll('main .white .headHidden');
 const hiddenElementsLine = document.querySelectorAll('main h2 span.hidden');
 
+const tech = document.querySelectorAll('.tech');
+
+const progressBars = Array.from(document.querySelectorAll('.progressBar'));
+const progressCont = document.querySelector('.progressCont');
+
 let touchstartx = 0;
 let touchmiddlex = window.screen.width/2;
 let touchendx = 0;
+
+let progress = [100, 100, 95, 100, 100, 78, 65, 83, 57, 82, 99, 88, 99]
 
 // console.log(projImg);
 
@@ -79,24 +87,40 @@ function updateProgressBar() {
 
 document.addEventListener('scroll', updateProgressBar);
 
+console.log(progressCont.offsetWidth)
+
 
 /// LOAD IN ANIMATIONS ///
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
+            // console.log(entry.target)
+            if (entry.target.classList.contains('tech')) {
+                progressBars.forEach((bar)=>{
+                    const progressPercent = `${(90 * progress[progressBars.indexOf(bar)]) / 100 + 6}%`
+                    bar.style.setProperty('--progressShort', progressPercent)
+                })
+            }
         } else {
             entry.target.classList.remove('show');
+            if (entry.target.classList.contains('tech')) {
+                progressBars.forEach((bar)=>{
+                    bar.style.setProperty('--progressShort', "1%")
+                })
+            }
         }
     });
 });
 
 hiddenElementsEdu.forEach((el) => observer.observe(el));
 hiddenElementsProj.forEach((el) => observer.observe(el));
+displayHiddenElementsProj.forEach((el) => observer.observe(el));
 hiddenElementsBigProj.forEach((el) => observer.observe(el));
 hiddenElementsAchieve.forEach((el) => observer.observe(el));
 hiddenElementsHead.forEach((el) => observer.observe(el));
 hiddenElementsLine.forEach((el) => observer.observe(el));
+tech.forEach((el) => observer.observe(el));
 
 
 /// CURSER FUNCTION ///
@@ -512,7 +536,7 @@ function change(id) {
         })
     }
 }
-const photo = [ './src/thrift.png', './src/thrift-two.png', './src/thrift-three.png', './src/thrift-four.png'];
+const photo = [ './src/thrift.webp', './src/thrift-two.webp', './src/thrift-three.webp', './src/thrift-four.webp'];
 let temp = 0;
 const timeinterval_a = setInterval(() => {
     
@@ -522,7 +546,7 @@ const timeinterval_a = setInterval(() => {
     projImg[3].style.backgroundRepeat= 'no-repeat';
     projImg[3].style.backgroundSize = 'contain';
     if (temp == (photo.length)) {
-        projImg[3].style.background = "url('./src/thrift-five.png')";
+        projImg[3].style.background = "url('./src/thrift-four.webp')";
         projImg[3].style.backgroundPosition= 'center';
         projImg[3].style.backgroundRepeat= 'no-repeat';
         projImg[3].style.backgroundSize = 'contain';
@@ -533,15 +557,15 @@ const timeinterval_a = setInterval(() => {
 }, 10000);
 timeinterval_a;
 let forNow = 0;
-const images = [ './src/alberto.png', './src/alberto-two.png', './src/alberto-three.png', './src/alberto-four.png', './src/alberto-five.png'];
+const images = [ './src/alberto.webp', './src/alberto-two.webp', './src/alberto-three.webp', './src/alberto-four.webp', './src/alberto-five.webp'];
 const timeinterval_b = setInterval(() => {
     projImg[2].style.transition = 'all ease .3s'; 
     projImg[2].style.background = ` url(${images[forNow]})`;
     projImg[2].style.backgroundPosition= 'center';
     projImg[2].style.backgroundRepeat= 'no-repeat';
     projImg[2].style.backgroundSize = 'contain';
-    if (temp == (images.length)) {
-        projImg[2].style.background = "url('./src/alberto-six.png')";
+    if (forNow == (images.length)) {
+        projImg[2].style.background = "url('./src/alberto-five.webp')";
         projImg[2].style.backgroundPosition= 'center';
         projImg[2].style.backgroundRepeat= 'no-repeat';
         projImg[2].style.backgroundSize = 'contain';
@@ -552,7 +576,7 @@ const timeinterval_b = setInterval(() => {
 }, 10000);
 timeinterval_b;
 let instance = 0;
-const pics = [ './src/lumen.png', './src/lumen-two.png', './src/lumen-three.png', './src/lumen-four.png', './src/lumen-five.png'];
+const pics = [ './src/lumen.webp', './src/lumen-two.webp', './src/lumen-three.webp', './src/lumen-four.webp', './src/lumen-five.webp'];
 const timeinterval_c = setInterval(() => {
     projImg[0].style.transition = 'all ease .3s'; 
     projImg[0].style.background = ` url(${pics[instance]})`;
@@ -560,7 +584,7 @@ const timeinterval_c = setInterval(() => {
     projImg[0].style.backgroundRepeat= 'no-repeat';
     projImg[0].style.backgroundSize = 'contain';
     if (temp == (pics.length)) {
-        projImg[0].style.background = "url('./src/lumen-six.png')";
+        projImg[0].style.background = "url('./src/lumen-six.webp')";
         projImg[0].style.backgroundPosition= 'center';
         projImg[0].style.backgroundRepeat= 'no-repeat';
         projImg[0].style.backgroundSize = 'contain';
@@ -571,7 +595,7 @@ const timeinterval_c = setInterval(() => {
 }, 1000);
 timeinterval_c;
 let thisOnce = 0;
-const gallery = [ './src/tnr_weather_1', './src/tnr_weather_2'];
+const gallery = [ './src/tnr_weather_1.webp', './src/tnr_weather_2.webp'];
 const timeinterval_d = setInterval(() => {
     projImg[1].style.transition = 'all ease .3s'; 
     projImg[1].style.background = ` url(${gallery[thisOnce]})`;
