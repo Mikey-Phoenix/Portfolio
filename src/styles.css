@@ -163,9 +163,10 @@ div.mobile {
     position: fixed;
     bottom: 5%;
     z-index: 10000;
-    height: 55vh;
+    height: max-content;
     max-height: 370px;
-    width: 200px;
+    width: max-content;
+    max-width: 100vw;
     padding: 2% 5%;
     overflow-y: hidden;
     transition: all ease .5s;
@@ -490,7 +491,7 @@ main .tech > div {
 main .tech div > div {
     /* width: fit-content; */
     padding: 10px 20px;
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 5px;
     margin: 5px;
 }
@@ -500,16 +501,19 @@ main .tech div div div.techName {
     justify-content: space-between;
 }
 main .tech div .progressCont {
-    /* width: 90%; */
+    /* width: 100%; */
+    height: 10px;
     padding: 0%;
-    /* overflow: hidden; */
+    overflow: hidden;
+    background-color: rgb(250, 250, 250);
     /* border: 1px solid red; */
 }
 main .tech div .progressBar {
     --progressShort: 1%;
     width: var(--progressShort);
-    height: 2px;
+    height: 100%;
     margin: 0%;
+    padding: 0%;
     background-color: rgba(177, 46, 79, 0.8);
     transition: all ease 1s;
 }
@@ -610,10 +614,14 @@ main .bigCont .bigProj #lumen {
 main .bigCont .bigProj #weather {
     background-image: url('./tnr_weather_1.webp');
 }
+main .bigCont .bigProj #ghost {
+    background-image: url('./ghost_1.webp');
+}
 main .bigCont .bigProj div:nth-child(2),
 main .bigCont .bigProj div:nth-child(4),
 main .bigCont .bigProj div:nth-child(6),
-main .bigCont .bigProj div:nth-child(8) {
+main .bigCont .bigProj div:nth-child(8),
+main .bigCont .bigProj div:nth-child(10) {
     display: none;
 }
 main .bigCont .bigProj div.active {
@@ -721,12 +729,15 @@ main .big .card#firstcard .image {
     background-image: url('./lumen.webp');
 }
 main .big .card#secondcard .image {
-    background-image: url('./tnr_weather_1.webp');
+    background-image: url('./ghost_1.webp');
 }
 main .big .card#thirdcard .image {
-    background-image: url('./alberto.webp');
+    background-image: url('./tnr_weather_1.webp');
 }
 main .big .card#fourthcard .image {
+    background-image: url('./alberto.webp');
+}
+main .big .card#fifthcard .image {
     background-image: url('./thrift.webp');
 }
 main .big .middle .image {
@@ -754,7 +765,13 @@ main .big .card div p , main .big .card div .technologies, main .big .card div a
 main .big .card .cast{
     display: none;
 }
-
+.inProgress {
+    color: rgb(177,46,79);
+    font-size: 1rem;
+    /* background-color: rgb(128, 25, 50);
+    position: absolute;
+    /* border: 1px solid red; */
+}
 
 
 /** CONTACT **/
@@ -1056,6 +1073,9 @@ main #contact .container .subContainer #res i {
     main .tech div div  {
         padding: 5px
     }
+    main .tech div .progressCont {
+        height: 5px;
+    }
 
 
     /** ACHIEVEMENTS **/
@@ -1101,7 +1121,7 @@ main #contact .container .subContainer #res i {
     }
     main .big .card {
         /* scroll-snap-align: center; */
-        height: 450px;
+        min-height: 450px;
         margin-top: -20%;
         margin-left: -5%;
         width: 100% !important;
@@ -1133,13 +1153,15 @@ main #contact .container .subContainer #res i {
         display: flex;
         flex-direction: column;
         align-items: start;
-        height: fit-content;
+        min-height: fit-content;
         position: static;
         bottom: 100%;
         width: 100% !important;
     }
     main .big .card div h4 {
+        margin-top: 10px;
         font-size: 1.7rem;
+        line-height: 1.7rem;
     }
     main .big .card div .explain {
         display: block;

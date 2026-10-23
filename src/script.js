@@ -13,7 +13,7 @@ setInterval(() => {
             setTimeout(() => {
                 let fourth = document.querySelector('#fourth');
                 fourth.style.animationName = "ballFourth";
-            }, 250);
+            }, 50);
         }, 250);
     }, 250);
     
@@ -38,6 +38,7 @@ const cursorOutline = document.querySelector("[data-cursor-outline]");
 
 const nav = document.querySelector("nav");
 const navlinks = Array.from(document.querySelectorAll("nav a"));
+const mobile = document.querySelector(".mobile");
 const mobileNav = document.querySelector(".mobile .active");
 const mobileNavCont = document.querySelector(".mobile .mobileHidden");
 const mobileNavLinks = Array.from(document.querySelectorAll(".mobile .mobileHidden a"));;
@@ -72,7 +73,7 @@ let touchstartx = 0;
 let touchmiddlex = window.screen.width/2;
 let touchendx = 0;
 
-let progress = [100, 100, 95, 100, 100, 78, 65, 83, 57, 82, 99, 88, 99]
+let progress = [100, 100, 95, 100, 100, 78, 65, 83, 57, 67, 82, 72, 99, 88, 99]
 
 // console.log(projImg);
 
@@ -98,7 +99,8 @@ const observer = new IntersectionObserver((entries)=>{
             // console.log(entry.target)
             if (entry.target.classList.contains('tech')) {
                 progressBars.forEach((bar)=>{
-                    const progressPercent = `${(90 * progress[progressBars.indexOf(bar)]) / 100 + 6}%`
+                    const progressPercent = `${progress[progressBars.indexOf(bar)]}%`
+                    // const progressPercent = `${(90 * progress[progressBars.indexOf(bar)]) / 100 + 6}%`
                     bar.style.setProperty('--progressShort', progressPercent)
                 })
             }
@@ -336,11 +338,14 @@ navlinks.forEach(link => {
     });
 });
 let toggle = 0;
+
 mobileNav.addEventListener("click", ()=>{
     if (toggle == 0) {        
         mobileNavCont.style.cssText = "top: 0%";
+        mobile.style.width = `200px`;
+        mobile.style.height = `55vh`;
         mobileNavLinks.forEach(link =>{
-           
+            
             switch (link.id) {
                 case "profmob":
                         link.style.width = "120px";
@@ -381,6 +386,8 @@ mobileNav.addEventListener("click", ()=>{
         toggle++;
     } else {
         mobileNavCont.style.cssText = "top: 100%";
+        mobile.style.width = `max-content`;
+        mobile.style.height = `max-content`;
         mobileNavLinks.forEach(link =>{
             if (link.className == "active") {
                 link.style.width = "50px";
@@ -500,56 +507,95 @@ function change(id) {
                     img.parentNode.children[3].classList.remove('active');
                     img.parentNode.children[5].classList.remove('active');
                     img.parentNode.children[7].classList.remove('active');
+                    img.parentNode.children[9].classList.remove('active');
                     document.querySelector('#firstcard').classList.add('middle')
                     document.querySelector('#secondcard').classList.remove('middle')
                     document.querySelector('#thirdcard').classList.remove('middle')
                     document.querySelector('#fourthcard').classList.remove('middle')
-                } else if (id == 'weather') {
+                    document.querySelector('#fifthcard').classList.remove('middle')
+                } else if (id == 'ghost') {
                     img.parentNode.children[1].classList.remove('active');
                     img.parentNode.children[3].classList.add('active');
                     img.parentNode.children[5].classList.remove('active');
                     img.parentNode.children[7].classList.remove('active');
+                    img.parentNode.children[9].classList.remove('active');
                     document.querySelector('#secondcard').classList.add('middle')
                     document.querySelector('#firstcard').classList.remove('middle')
                     document.querySelector('#thirdcard').classList.remove('middle')
                     document.querySelector('#fourthcard').classList.remove('middle')
-                }  else if (id == 'alberto') {
+                    document.querySelector('#fifthcard').classList.remove('middle')
+                // }  else if (id == 'alberto') {
+                } else if (id == 'weather') {
                     img.parentNode.children[1].classList.remove('active');
                     img.parentNode.children[3].classList.remove('active');
                     img.parentNode.children[5].classList.add('active');
                     img.parentNode.children[7].classList.remove('active');
+                    img.parentNode.children[9].classList.remove('active');
                     document.querySelector('#thirdcard').classList.add('middle')
                     document.querySelector('#firstcard').classList.remove('middle')
                     document.querySelector('#secondcard').classList.remove('middle')
                     document.querySelector('#fourthcard').classList.remove('middle')
+                    document.querySelector('#fifthcard').classList.remove('middle')
+                }  else if (id == 'alberto') {
+                    img.parentNode.children[1].classList.remove('active');
+                    img.parentNode.children[3].classList.remove('active');
+                    img.parentNode.children[5].classList.remove('active');
+                    img.parentNode.children[7].classList.add('active');
+                    img.parentNode.children[9].classList.remove('active');
+                    document.querySelector('#fourthcard').classList.add('middle')
+                    document.querySelector('#firstcard').classList.remove('middle')
+                    document.querySelector('#secondcard').classList.remove('middle')
+                    document.querySelector('#thirdcard').classList.remove('middle')
+                    document.querySelector('#fifththcard').classList.remove('middle')
                 } else {
                     img.parentNode.children[1].classList.remove('active');
                     img.parentNode.children[5].classList.remove('active');
                     img.parentNode.children[3].classList.remove('active');
-                    img.parentNode.children[7].classList.add('active');
-                    document.querySelector('#fourthcard').classList.add('middle')
+                    img.parentNode.children[7].classList.remove('active');
+                    img.parentNode.children[9].classList.add('active');
+                    document.querySelector('#fifththcard').classList.add('middle')
                     document.querySelector('#secondcard').classList.remove('middle')
                     document.querySelector('#firstcard').classList.remove('middle')
                     document.querySelector('#thirdcard').classList.remove('middle')
+                    document.querySelector('#fourthcard').classList.remove('middle')
                     }
             }
         })
     }
 }
-const photo = [ './src/thrift.webp', './src/thrift-two.webp', './src/thrift-three.webp', './src/thrift-four.webp'];
-let temp = 0;
+const shots = [ './src/thrift.webp', './src/thrift-two.webp', './src/thrift-three.webp', './src/thrift-four.webp'];
+let tempS = 0;
 const timeinterval_a = setInterval(() => {
     
-    projImg[3].style.transition = 'all ease .3s'; 
-    projImg[3].style.background = ` url(${photo[temp]})`;
-    projImg[3].style.backgroundPosition= 'center';
-    projImg[3].style.backgroundRepeat= 'no-repeat';
-    projImg[3].style.backgroundSize = 'contain';
+    projImg[4].style.transition = 'all ease .3s'; 
+    projImg[4].style.background = ` url(${photo[temp]})`;
+    projImg[4].style.backgroundPosition= 'center';
+    projImg[4].style.backgroundRepeat= 'no-repeat';
+    projImg[4].style.backgroundSize = 'contain';
     if (temp == (photo.length)) {
-        projImg[3].style.background = "url('./src/thrift-four.webp')";
-        projImg[3].style.backgroundPosition= 'center';
-        projImg[3].style.backgroundRepeat= 'no-repeat';
-        projImg[3].style.backgroundSize = 'contain';
+        projImg[4].style.background = "url('./src/thrift-four.webp')";
+        projImg[4].style.backgroundPosition= 'center';
+        projImg[4].style.backgroundRepeat= 'no-repeat';
+        projImg[4].style.backgroundSize = 'contain';
+        temp = 0;
+    } else {
+        temp++;
+    }
+}, 10000);
+const photo = [ './src/ghost_1.webp', './src/ghost_2.webp', './src/ghost_3.webp', './src/ghost_4.webp', './src/ghost_5.webp',];
+let temp = 0;
+const timeinterval_e = setInterval(() => {
+    
+    projImg[1].style.transition = 'all ease .3s'; 
+    projImg[1].style.background = ` url(${photo[temp]})`;
+    projImg[1].style.backgroundPosition= 'center';
+    projImg[1].style.backgroundRepeat= 'no-repeat';
+    projImg[1].style.backgroundSize = 'contain';
+    if (temp == (photo.length)) {
+        projImg[1].style.background = "url('./src/ghost_6.webp')";
+        projImg[1].style.backgroundPosition= 'center';
+        projImg[1].style.backgroundRepeat= 'no-repeat';
+        projImg[1].style.backgroundSize = 'contain';
         temp = 0;
     } else {
         temp++;
@@ -559,16 +605,16 @@ timeinterval_a;
 let forNow = 0;
 const images = [ './src/alberto.webp', './src/alberto-two.webp', './src/alberto-three.webp', './src/alberto-four.webp', './src/alberto-five.webp'];
 const timeinterval_b = setInterval(() => {
-    projImg[2].style.transition = 'all ease .3s'; 
-    projImg[2].style.background = ` url(${images[forNow]})`;
-    projImg[2].style.backgroundPosition= 'center';
-    projImg[2].style.backgroundRepeat= 'no-repeat';
-    projImg[2].style.backgroundSize = 'contain';
+    projImg[3].style.transition = 'all ease .3s'; 
+    projImg[3].style.background = ` url(${images[forNow]})`;
+    projImg[3].style.backgroundPosition= 'center';
+    projImg[3].style.backgroundRepeat= 'no-repeat';
+    projImg[3].style.backgroundSize = 'contain';
     if (forNow == (images.length)) {
-        projImg[2].style.background = "url('./src/alberto-five.webp')";
-        projImg[2].style.backgroundPosition= 'center';
-        projImg[2].style.backgroundRepeat= 'no-repeat';
-        projImg[2].style.backgroundSize = 'contain';
+        projImg[3].style.background = "url('./src/alberto-five.webp')";
+        projImg[3].style.backgroundPosition= 'center';
+        projImg[3].style.backgroundRepeat= 'no-repeat';
+        projImg[3].style.backgroundSize = 'contain';
         forNow = 0;
     } else {
         forNow++;
@@ -597,16 +643,16 @@ timeinterval_c;
 let thisOnce = 0;
 const gallery = [ './src/tnr_weather_1.webp', './src/tnr_weather_2.webp'];
 const timeinterval_d = setInterval(() => {
-    projImg[1].style.transition = 'all ease .3s'; 
-    projImg[1].style.background = ` url(${gallery[thisOnce]})`;
-    projImg[1].style.backgroundPosition= 'center';
-    projImg[1].style.backgroundRepeat= 'no-repeat';
-    projImg[1].style.backgroundSize = 'contain';
+    projImg[2].style.transition = 'all ease .3s'; 
+    projImg[2].style.background = ` url(${gallery[thisOnce]})`;
+    projImg[2].style.backgroundPosition= 'center';
+    projImg[2].style.backgroundRepeat= 'no-repeat';
+    projImg[2].style.backgroundSize = 'contain';
     if (temp == (pics.length)) {
-        projImg[1].style.background = "url('./src/tnr_weather_1')";
-        projImg[1].style.backgroundPosition= 'center';
-        projImg[1].style.backgroundRepeat= 'no-repeat';
-        projImg[1].style.backgroundSize = 'contain';
+        projImg[2].style.background = "url('./src/tnr_weather_1')";
+        projImg[2].style.backgroundPosition= 'center';
+        projImg[2].style.backgroundRepeat= 'no-repeat';
+        projImg[2].style.backgroundSize = 'contain';
         forNow = 0;
     } else {
         forNow++;
